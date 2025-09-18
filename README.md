@@ -4,7 +4,7 @@ Uma aplicação web que simula uma Pokédex, utilizando a [PokéAPI](https://pok
 
 ## 📋 Funcionalidades
 
-- Lista de Pokémon com paginação
+- Lista de Pokémon
 - Detalhes do Pokémon incluindo:
   - Tipo(s)
   - Peso e Altura
