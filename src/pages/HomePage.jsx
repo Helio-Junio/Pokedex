@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import PokemonCard from '../components/PokemonCard';
-import { getPokemonList, searchPokemon } from '../services/pokeApi';
+import { getPokemonList, getPokemonDetails, searchPokemon } from '../services/pokeApi';
 
 const HomePage = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -26,37 +26,31 @@ const HomePage = () => {
 
   // Buscar lista de Pokémon
   const fetchPokemon = async (offset = 0) => {
-    try {
-      setLoading(true);
-      const data = await getPokemonList(limit, offset);
-      
-      // Para cada Pokémon, buscar detalhes para obter a imagem
-      const pokemonWithDetails = await Promise.all(
-        data.results.map(async (pokemon, index) => {
-          const details = await getPokemonDetails(offset + index + 1);
-          return {
-            id: offset + index + 1,
-            name: pokemon.name,
-            image: details.sprites.other['official-artwork'].front_default,
-            types: details.types
-          };
-        })
-      );
-      
-      setPokemonList(prev => [...prev, ...pokemonWithDetails]);
-      setError(null);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    setLoading(true);
+    const data = await getPokemonList(limit, offset);
+    
+    const pokemonWithDetails = await Promise.all(
+      data.results.map(async (pokemon, index) => {
+        const details = await getPokemonDetails(offset + index + 1);
+        return {
+          id: offset + index + 1,
+          name: pokemon.name,
+          image: details.sprites.other['official-artwork'].front_default,
+          types: details.types
+        };
+      })
+    );
+    
+    setPokemonList(prev => [...prev, ...pokemonWithDetails]);
+    setError(null);
+  } catch (err) {
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
-  // Buscar detalhes de um Pokémon específico
-  const getPokemonDetails = async (id) => {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    return await response.json();
-  };
 
   // Pesquisar Pokémon
   const handleSearch = async (event) => {

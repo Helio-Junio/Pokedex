@@ -1,32 +1,28 @@
+import api from './api';
 
 export const getPokemonList = async (limit = 20, offset = 0) => {
   try {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
-    );
-    if (!response.ok) throw new Error('Failed to fetch Pokémon list');
-    return await response.json();
+    const response = await api.get(`/pokemon?limit=${limit}&offset=${offset}`);
+    return response.data;
   } catch (error) {
-    throw new Error('Failed to fetch Pokémon list');
-  }
-};
-
-export const searchPokemon = async (name) => {
-  try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-    if (!response.ok) throw new Error('Pokémon not found');
-    return await response.json();
-  } catch (error) {
-    throw new Error('Pokémon not found');
+    throw new Error('Erro ao buscar lista de Pokémon');
   }
 };
 
 export const getPokemonDetails = async (id) => {
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    if (!response.ok) throw new Error('Failed to fetch Pokémon details');
-    return await response.json();
+    const response = await api.get(`/pokemon/${id}`);
+    return response.data;
   } catch (error) {
-    throw new Error('Failed to fetch Pokémon details');
+    throw new Error('Erro ao buscar detalhes do Pokémon');
+  }
+};
+
+export const searchPokemon = async (term) => {
+  try {
+    const response = await api.get(`/pokemon/${term.toLowerCase()}`);
+    return response.data;
+  } catch (error) {
+    throw new Error('Pokémon não encontrado');
   }
 };

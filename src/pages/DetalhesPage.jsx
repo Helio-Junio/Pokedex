@@ -103,7 +103,7 @@ export default function DetalhesPage() {
         {/*chama o componente AppBarDetalhes */}
         <AppBarDetalhes pokemon={pokemon} />
         <img 
-          src="/src/assets/Pokeball.svg" 
+          src="/images/Pokeball.svg" 
           alt="Pokebola de fundo" 
           style={{ 
             position: 'absolute', 
