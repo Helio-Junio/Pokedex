@@ -1,4 +1,4 @@
-// src/services/pokeApi.js
+
 export const getPokemonList = async (limit = 20, offset = 0) => {
   try {
     const response = await fetch(
