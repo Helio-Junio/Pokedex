@@ -69,3 +69,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ## 🙋‍♂️ Autor
 
 Hélio Ferreira - [GitHub](https://github.com/helio-junio)
+Guilherme Salatiel
+Oscar Lara
+Matheus Lima
