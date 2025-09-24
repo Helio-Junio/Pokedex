@@ -1,7 +1,7 @@
 # 🎮 Pokédex
 
-Uma aplicação web que simula uma Pokédex, utilizando a [PokéAPI](https://pokeapi.co/) para exibir informações detalhadas sobre Pokémon.
-[Pokédex](https://pokedex-zeta-opal-99.vercel.app/)
+Uma aplicação web que simula uma [Pokédex](https://pokedex-zeta-opal-99.vercel.app/), utilizando a [PokéAPI](https://pokeapi.co/) para exibir informações detalhadas sobre Pokémon.
+
 
 ## 📋 Funcionalidades
 
